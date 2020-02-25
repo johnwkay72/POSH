@@ -31,12 +31,12 @@ Transcript to an output directory.
 
 #endregion
 # --------------------------------------------------------------------------- #
-#region - ESP_BASE_ITEMS:
+#region - DOM_BASE_ITEMS:
 <#
 To call the BASE ITEMS use one of the following methods:
-    .\ESP_Base.ps1
-    invoke-expression -Command .\ESP_Base.ps1
-    & "<path>\ESP_Base.ps1"
+    .\DOM_Base.ps1
+    invoke-expression -Command .\DOM_Base.ps1
+    & "<path>\DOM_Base.ps1"
 
 #>
 # --------------------------------------------------------------------------- #
