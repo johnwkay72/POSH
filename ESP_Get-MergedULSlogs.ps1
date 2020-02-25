@@ -1,5 +1,5 @@
 ﻿# --------------------------------------------------------------------------- #
-# ESP-Get-MergedULSlogs
+# ESP-Get-MergedULSlogs (Enterprise SharePoint)
 # --------------------------------------------------------------------------- #
 #region - SYNOPSIS:
 
@@ -54,22 +54,12 @@ Requires PowerShell Plugin for SharePoint
     # ----------------------------------------------------------------------- #
     #region - SET THE ENVIRONMENT / SMTP SERVER.
         $FQD = (Get-WmiObject win32_computersystem).Domain ;
-        if ($FQD -like 'MPF.exostar.com') 
-            {$domain='MPF';$exoENV='EZM-PROD';$smtpFROM='EZM-PROD@exostar.com';$smtp='10.36.9.9'}
-        elseif ($FQD -like "FPX.exostar.com") 
-            {$domain = 'FPX';$exoENV='FPv6-US';$smtpFROM = 'FPv6-US@exostar.com';$smtp = '10.36.9.9'}
-        elseif ($FQD -like "fpx-mpi.exostar.com") 
-            {$domain = 'FPK-MPI';$exoENV='FPv6-UK';$smtpFROM = 'FPv6UK@exostar.com';$smtp = '10.38.19.6'}
-        elseif ($FQD -like "FPX1.exostartest.com") 
-            {$domain = 'FPX1';$exoENV='FPv6-UAT';$smtpFROM = 'FPv6-UAT@exostar.com';$smtp = '10.248.3.4'}
-        elseif ($FQD -like "uat.fp.local") 
-            {$domain = 'FPX7';$exoENV='FPv7-UAT';$smtpFROM = 'FPv7-UAT@exostar.com';$smtp = 'mail.fpuat.exostartest.com'}
-        elseif ($FQD -like "MPF.exostartest.com") 
-            {$domain = 'MPFU';$exoENV='EZM-UAT';$smtpFROM = 'EZM-UAT@exostar.com';$smtp = '10.248.3.4'}
-        elseif ($FQD -like "MPFQA.exostartest.com") 
-            {$domain = 'MPFQA';$exoENV='EZM-QA';$smtpFROM = 'EZM-QA@exostar.com';;$smtp = '10.248.3.4'}
+        if ($FQD -like 'site01.dom01.com') 
+            {$domain='site01';$exoENV='EMV-01';$smtpFROM='APP-ENV@domain.com';$smtp='10.10.1.5'}
+        if ($FQD -like "site02.dom01.com") 
+            {$domain = 'site02';$exoENV='ENV-02';$smtpFROM = 'APP-ENV@domain.com';$smtp = '10.10.2.5'}
     # SET COMMON ENVIRONMENTAL VARIABLES:
-        $baseURL = "https://mysite.${FQD}/"
+        $baseURL = "https://SPsite.${FQD}/"
 
     # SCRENN OUTPUT:
         Write-Host $line ;
@@ -83,7 +73,7 @@ Requires PowerShell Plugin for SharePoint
     # ----------------------------------------------------------------------- #
 
     # SET VARIABLES:
-        $outPATH = "C:\TECHOPS\SCRIPTS\OUTPUT" ;
+        $outPATH = "C:\<path>\SCRIPTS\OUTPUT" ;
         $outNAME = "${timeSTAMP}_${domain}_MULS_logs" ;
         $outFILE = "${outPATH}\${outNAME}.log" ;
         $zipFILE = "${outPATH}\${outNAME}.zip" ;
@@ -92,6 +82,7 @@ Requires PowerShell Plugin for SharePoint
     # CORRELATIONID REGEX:
     # SAMPLE: F0BB0790-4323-A153-096F-ABCDC80E24D4
         $cID_regex = "(^[A-z0-9]{8})(-)([A-z0-9]{4})(-)([A-z0-9]{4})(-)([A-z0-9]{4})(-)([A-z0-9]{12})" ;
+        smtp_regex = TBD
         
 
 #endregion        
