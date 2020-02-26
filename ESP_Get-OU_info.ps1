@@ -10,7 +10,7 @@
 # --------------------------------------------------------------------------- #
 #region - CLEAR VARIABLES:
     $ErrorActionPreference = "SilentlyContinue" ;
-    Clear-Variable FQD,domain,exoENV,smtpFROM,smtp,baseURL ;
+    Clear-Variable FQD,domain,domENV,smtpFROM,smtp,baseURL ;
     Clear-Variable timeSTAMP,line,pad,smtp_regex,outpath ;
 
     Clear-Variable outNAME,outFILE,zipFILE,cID_regex ;
@@ -100,7 +100,7 @@
         if ($chkUSER -ne $null)
             {Get-ADUser -Identity $user -Properties * | select $select | FL}
         else 
-            {Write-Warning "User cannot be found"}
+            {Write-Warning "User cannot be found"} ;
 
 # --------------------------------------------------------------------------- #
 # END
